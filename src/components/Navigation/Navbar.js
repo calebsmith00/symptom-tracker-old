@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import './Navbar.scss'
 
 export default function Navbar() {
@@ -12,7 +13,13 @@ export default function Navbar() {
             ...currentPage,
             class: 'navbar-link-active'
         })
-    }, [])
+    }, [currentPage])
+
+    const getActive = ({ isActive }) => {
+        return isActive ?
+            "navbar-link navbar-link-active"
+            : "navbar-link"
+    }
 
     // Render
     return (
@@ -22,8 +29,17 @@ export default function Navbar() {
             </div>
 
             <div className='navbar-links'>
-                <span className="navbar-link-border"><p className={`navbar-link ${currentPage.class}`}>Home</p></span>
-                <span className="navbar-link-border"><p className='navbar-link'>Login</p></span>
+                <span className="navbar-link-border">
+                    <NavLink to="/" className={getActive}>
+                        Home
+                    </NavLink>
+                </span>
+
+                <span className="navbar-link-border">
+                    <NavLink to="/user/login" className={getActive}>
+                        Login
+                    </NavLink>
+                </span>
             </div>
         </div>
     )

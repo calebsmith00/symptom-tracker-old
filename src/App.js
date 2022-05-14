@@ -1,7 +1,15 @@
+import { Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navigation/Navbar'
+
 function App() {
   return (
     <div>
-      <h1>Skeleton created.</h1>
+      <Navbar />
+
+      <Routes>
+        <Route exact path="/" element={<p>Homepage</p>} />
+        <Route path="user/login" element={<p>Login</p>} />
+      </Routes>
     </div>
   );
 }
