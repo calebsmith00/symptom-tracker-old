@@ -1,3 +1,5 @@
+import './SymptomTracker.scss'
+
 export default function MasterList() {
     return (
         <>

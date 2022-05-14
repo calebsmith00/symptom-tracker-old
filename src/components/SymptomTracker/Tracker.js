@@ -1,3 +1,4 @@
+import './SymptomTracker.scss'
 import { useState } from 'react'
 import Issues from './Issues'
 import MasterList from './MasterList'
