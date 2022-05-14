@@ -11,7 +11,7 @@ Currently, the only way to access this is by cloning the repository and building
 1. First, [clone the repository](https://github.com/minifiedcode/symptom-tracker.git).
 2. Next, use your preferred terminal to navigate to wherever you cloned the repository.
 3. Then, in the terminal, type `npm install` to install the required modules.
-4. Finally, in the terminal, type `npm run dev` to run the development server.
+4. Finally, in the terminal, type `npm start` to run the development server.
 
 ## TODO: repository
 
