@@ -13,7 +13,7 @@ export default function Navbar() {
             ...currentPage,
             class: 'navbar-link-active'
         })
-    }, [currentPage])
+    }, [])
 
     const getActive = ({ isActive }) => {
         return isActive ?

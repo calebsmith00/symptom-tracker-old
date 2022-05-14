@@ -1,7 +1,9 @@
+import Tracker from "../components/SymptomTracker/Tracker"
+
 export default function SymptomTracker() {
     return (
         <>
-            <h1>👍</h1>
+            <Tracker />
         </>
     )
 }
