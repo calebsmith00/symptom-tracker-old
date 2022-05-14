@@ -40,6 +40,12 @@ export default function Navbar() {
                         Login
                     </NavLink>
                 </span>
+
+                <span className="navbar-link-border">
+                    <NavLink to="/user/symptom-tracker" className={getActive}>
+                        Track Now!
+                    </NavLink>
+                </span>
             </div>
         </div>
     )
