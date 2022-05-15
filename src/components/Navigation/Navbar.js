@@ -1,20 +1,7 @@
-import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import './Navbar.scss'
 
 export default function Navbar() {
-    const [currentPage, setCurrentPage] = useState({
-        link: '/',
-        class: ''
-    })
-
-    useEffect(() => {
-        if (currentPage.link === '/') setCurrentPage({
-            ...currentPage,
-            class: 'navbar-link-active'
-        })
-    }, [])
-
     const getActive = ({ isActive }) => {
         return isActive ?
             "navbar-link navbar-link-active"
