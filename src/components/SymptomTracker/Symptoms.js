@@ -8,6 +8,7 @@ export default function Symptoms({ symptom }) {
 
     useEffect(() => {
         if (!completeSymptom(symptom)) return
+
         setSymptoms([
             ...symptoms,
             symptom.substring(0, symptom.length - 1)
@@ -18,29 +19,33 @@ export default function Symptoms({ symptom }) {
         const id = e.target.id
         const value = e.target.value
 
-        let newSymptoms = symptoms.map((symptom, index) => {
-            if (index == id) return value
-            if (index == id && value === "") return ""
-            return symptom
-        })
+        let newSymptoms =
+            symptoms
+                .map((symptom, index) => {
+                    if (index == id) return value
+                    if (index == id && value === "") return ""
+                    return symptom
+                })
+                .filter((symptom, index) => {
+                    if (symptom === "") return false
+                    return true
+                })
+
 
         setSymptoms(newSymptoms)
     }
 
     return (
         <div className="symptom-list mb-3">
-            {symptoms.length > 0 && <p>You have listed the following symptoms:</p>}
+            {(symptoms.length > 0) && <p>You have listed the following symptoms: {symptoms.length}</p>}
 
             {symptoms.map((symptom, index) => {
                 if (symptom === "") return
                 return (
-                    <span key={index}>
-                        <InputGroup id={index} >
-                            <InputGroup.Checkbox id={index} aria-label="Checkbox for symptom text input" />
-                            <FormControl id={index} aria-label="Text input with checkbox" value={symptom} onChange={updateSymptomName} />
-
-                        </InputGroup>
-                    </span>
+                    <InputGroup key={index} id={index} >
+                        <InputGroup.Checkbox id={index} aria-label="Checkbox for symptom text input" />
+                        <FormControl id={index} aria-label="Text input with checkbox" value={symptom} onChange={updateSymptomName} />
+                    </InputGroup>
                 )
             })}
         </div>
