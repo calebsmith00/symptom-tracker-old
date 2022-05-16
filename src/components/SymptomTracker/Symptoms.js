@@ -16,21 +16,17 @@ export default function Symptoms({ symptom }) {
     }, [symptoms, symptom])
 
     const updateSymptomName = e => {
-        const id = e.target.id
+        const id = parseInt(e.target.id) - 1
         const value = e.target.value
 
         let newSymptoms =
             symptoms
                 .map((symptom, index) => {
-                    if (index === id.toString()) return value
-                    if (index === id.toString() && value === "") return ""
+                    if (index === id) return value
+                    if (index === id && value === "") return ""
                     return symptom
                 })
-                .filter((symptom, index) => {
-                    if (symptom === "") return false
-                    return true
-                })
-
+                .filter(symptom => symptom !== "")
 
         setSymptoms(newSymptoms)
     }
@@ -41,9 +37,9 @@ export default function Symptoms({ symptom }) {
 
             {symptoms.map((symptom, index) => {
                 return (
-                    <InputGroup key={index} id={index} >
-                        <InputGroup.Checkbox id={index} aria-label="Checkbox for symptom text input" />
-                        <FormControl id={index} aria-label="Text input with checkbox" value={symptom} onChange={updateSymptomName} />
+                    <InputGroup key={index} >
+                        <InputGroup.Checkbox aria-label="Checkbox for symptom text input" />
+                        <FormControl id={index + 1} aria-label="Text input with checkbox" value={symptom} onChange={updateSymptomName} />
                     </InputGroup>
                 )
             })}
