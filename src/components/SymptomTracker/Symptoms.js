@@ -13,7 +13,7 @@ export default function Symptoms({ symptom }) {
             ...symptoms,
             symptom.substring(0, symptom.length - 1)
         ])
-    }, [symptom])
+    }, [symptoms, symptom])
 
     const updateSymptomName = e => {
         const id = e.target.id
@@ -22,8 +22,8 @@ export default function Symptoms({ symptom }) {
         let newSymptoms =
             symptoms
                 .map((symptom, index) => {
-                    if (index == id) return value
-                    if (index == id && value === "") return ""
+                    if (index === id.toString()) return value
+                    if (index === id.toString() && value === "") return ""
                     return symptom
                 })
                 .filter((symptom, index) => {
@@ -40,7 +40,6 @@ export default function Symptoms({ symptom }) {
             {(symptoms.length > 0) && <p>You have listed the following symptoms: {symptoms.length}</p>}
 
             {symptoms.map((symptom, index) => {
-                if (symptom === "") return
                 return (
                     <InputGroup key={index} id={index} >
                         <InputGroup.Checkbox id={index} aria-label="Checkbox for symptom text input" />
