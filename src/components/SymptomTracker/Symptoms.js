@@ -46,7 +46,7 @@ export default function Symptoms({ symptom, onFinishEditing }) {
             })}
 
             <span className="mt-3">
-                <Button variant="primary" type="submit" onClick={onFinishEditing}>
+                <Button variant="primary" type="submit" onClick={() => onFinishEditing(symptoms)}>
                     Submit
                 </Button>
             </span>

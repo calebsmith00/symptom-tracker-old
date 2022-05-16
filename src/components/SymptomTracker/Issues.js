@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import './SymptomTracker.scss'
 import Symptoms from './Symptoms'
+import IssueList from './IssueList'
 
 export function completeSymptom(symptom) {
     const symptomLength = symptom.length - 1
@@ -18,6 +19,7 @@ export default function Issues() {
         issueName: "",
         issueSymptom: ""
     })
+    const [issues, setIssues] = useState(JSON.parse(sessionStorage.getItem('issues')) || [])
 
     useEffect(() => {
         if (!completeSymptom(issue.issueSymptom)) return
@@ -25,7 +27,8 @@ export default function Issues() {
             ...issue,
             issueSymptom: ""
         })
-    }, [issue])
+
+    }, [issue, issues])
 
 
     const handleChange = e => {
@@ -38,9 +41,21 @@ export default function Issues() {
         })
     }
 
-    const onFinishEditing = () => {
+    const onFinishEditing = symptoms => {
         setInProgress(false)
         setFinished(true)
+
+        let existingEntries = JSON.parse(sessionStorage.getItem('issues'))
+        if (existingEntries == null) existingEntries = []
+
+        let addedIssue = {
+            name: issue.issueName,
+            symptoms
+        }
+
+        existingEntries.push(addedIssue)
+        setIssues(existingEntries)
+        sessionStorage.setItem("issues", JSON.stringify(existingEntries))
     }
 
     return (
@@ -65,6 +80,8 @@ export default function Issues() {
             }
 
             {finished && <p>Your issue has been created!</p>}
+
+            <IssueList issues={issues} />
         </div>
     )
 }
