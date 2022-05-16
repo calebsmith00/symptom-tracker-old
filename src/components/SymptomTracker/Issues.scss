@@ -3,3 +3,9 @@
 .issues {
     margin: 10px;
 }
+
+.symptom-list {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
