@@ -1,0 +1,19 @@
+@import '../../global_styles/variables';
+
+.issues {
+    margin: 10px;
+}
+
+.symptom-list {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.issues {
+    a {
+        display: block;
+        text-decoration: none;
+        width: 100%;
+    }
+}

@@ -1,20 +1,7 @@
-import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import './Navbar.scss'
 
 export default function Navbar() {
-    const [currentPage, setCurrentPage] = useState({
-        link: '/',
-        class: ''
-    })
-
-    useEffect(() => {
-        if (currentPage.link === '/') setCurrentPage({
-            ...currentPage,
-            class: 'navbar-link-active'
-        })
-    }, [currentPage])
-
     const getActive = ({ isActive }) => {
         return isActive ?
             "navbar-link navbar-link-active"
@@ -38,6 +25,12 @@ export default function Navbar() {
                 <span className="navbar-link-border">
                     <NavLink to="/user/login" className={getActive}>
                         Login
+                    </NavLink>
+                </span>
+
+                <span className="navbar-link-border">
+                    <NavLink to="/user/symptom-tracker" className={getActive}>
+                        Track Now!
                     </NavLink>
                 </span>
             </div>

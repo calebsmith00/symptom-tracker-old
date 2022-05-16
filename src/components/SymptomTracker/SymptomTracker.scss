@@ -1,0 +1,9 @@
+@import './Issues';
+
+.tracker {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    align-items: center;
+}
