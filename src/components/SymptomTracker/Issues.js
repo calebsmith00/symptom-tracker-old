@@ -1,9 +1,10 @@
+import Button from 'react-bootstrap/Button'
 import './SymptomTracker.scss'
 
 export default function Issues() {
     return (
-        <>
-            <h1>Issue</h1>
-        </>
+        <div className="issues">
+            <Button variant="outline-primary">Create New Issue</Button>
+        </div>
     )
 }
