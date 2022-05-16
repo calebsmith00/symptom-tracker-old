@@ -1,9 +1,10 @@
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
+import Button from 'react-bootstrap/Button'
 import { useEffect, useState } from 'react'
 import { completeSymptom } from './Issues'
 
-export default function Symptoms({ symptom }) {
+export default function Symptoms({ symptom, onFinishEditing }) {
     const [symptoms, setSymptoms] = useState([])
 
     useEffect(() => {
@@ -43,6 +44,12 @@ export default function Symptoms({ symptom }) {
                     </InputGroup>
                 )
             })}
+
+            <span className="mt-3">
+                <Button variant="primary" type="submit" onClick={onFinishEditing}>
+                    Submit
+                </Button>
+            </span>
         </div>
     )
 }

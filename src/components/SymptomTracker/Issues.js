@@ -13,6 +13,7 @@ export function completeSymptom(symptom) {
 
 export default function Issues() {
     const [inProgress, setInProgress] = useState(false)
+    const [finished, setFinished] = useState(false)
     const [issue, setIssue] = useState({
         issueName: "",
         issueSymptom: ""
@@ -37,9 +38,14 @@ export default function Issues() {
         })
     }
 
+    const onFinishEditing = () => {
+        setInProgress(false)
+        setFinished(true)
+    }
+
     return (
         <div className="issues">
-            {!inProgress &&
+            {(!inProgress && !finished) &&
                 <Button variant="outline-primary" onClick={() => setInProgress(true)}>Create New Issue</Button>}
 
             {inProgress &&
@@ -54,13 +60,11 @@ export default function Issues() {
                         <Form.Control type="text" placeholder="For example: nausea, headache, fatigue" onChange={handleChange} value={issue.issueSymptom} />
                     </Form.Group>
 
-                    <Symptoms symptom={issue.issueSymptom} />
-
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
+                    <Symptoms symptom={issue.issueSymptom} onFinishEditing={onFinishEditing} />
                 </Form>
             }
+
+            {finished && <p>Your issue has been created!</p>}
         </div>
     )
 }
