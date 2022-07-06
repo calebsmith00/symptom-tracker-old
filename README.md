@@ -1,3 +1,7 @@
+# This project is abandoned 
+
+Bye bye 👋
+
 # Introduction
 
 Hello, thank you for taking the time to look at my symptom tracker web application. This application was created to support my wife, who has type 1 diabetes. Diabeties can cause a plethora of medical side effects, and as such, it's important for her to track her symptoms. Right now, she is using good 'ole pen and paper, but I aim to create this to make it easier for her.
